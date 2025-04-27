@@ -4,7 +4,7 @@ export class Inventory{
 
     private _page: Page;
     private shopping_cart: string = '[data-test="shopping-cart-link"]';
-    private menuBtn : string = '[id = "react-burger-menu-btn"]';
+    private menuBtn : string = '[id="react-burger-menu-btn"]';
 
     constructor(page:Page){
         this._page = page;
@@ -16,7 +16,7 @@ export class Inventory{
     }
 
     public async logout(){
-        await this._page.goto('/inventory.html#')
+        await this._page.goto('/inventory.html#');
         await this._page.waitForLoadState();
     }
 }

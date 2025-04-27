@@ -4,11 +4,6 @@ import { DemoSauceApp } from '../pages/demosauceapp';
 import { Inventory } from '../pages/inventory';
 import * as fs from 'fs';
 
-
-// const users : UserDetails[] = [
-//     {username : 'standard_user',password:'secret_sauce'},
-//     {username : 'performance_glitch_user',password:'secret_sauce'}
-// ];
 const rawData = fs.readFileSync('./data/users.json','utf-8');
 const users = JSON.parse(rawData);
 

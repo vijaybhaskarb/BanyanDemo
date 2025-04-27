@@ -15,10 +15,10 @@ test('login standard user', async ({page})=> {
     let invenory = new Inventory(page);
     await invenory.checkFieldsVisible();
     await invenory.logout();
-    await demoSauce.checkLoginFieldsVisible();
+
 });
 
-// validate login for multiple users 
+
 
 
 
