@@ -13,17 +13,26 @@ test.describe('Validate login for multiple users', ()=> {
     
     users.forEach((user : UserDetails) => {
 
-        test(`Login user test : ${user.username}`, async ({page})=> {
-
+        test(`Login user test : ${user.username}`, async ({page},testInfo)=> {
             let demoSauce = new DemoSauceApp(page);
-            demoSauce.gotoHomePage();
-            await page.screenshot({ path: `homepage${user.username}.png`, fullPage: true });
+            await demoSauce.gotoHomePage();
+            let image1name = `homepage_${user.username}.png`;
+            const homepageScreenshot = await page.screenshot({ path: image1name, fullPage: true });
+            await testInfo.attach(image1name,{
+                body: homepageScreenshot,
+                contentType : 'image/png'
+            });
             await demoSauce.checkLoginFieldsVisible();
             await demoSauce.login(user.username,user.password);
             // check fields visible for user 
             console.log(`checking inventory page fields available to user : ${user.username}`);
             let invenory = new Inventory(page);
-            await page.screenshot({ path: `inventory${user.username}`, fullPage: true });
+            let image2name = `inventory_${user.username}.png`;
+            const inventoryPageScrShot =  await page.screenshot({ path: image2name, fullPage: true });
+            await testInfo.attach(image1name,{
+                body: inventoryPageScrShot,
+                contentType : 'image/png'
+            });
             invenory.checkFieldsVisible();
             invenory.logout();
         });
