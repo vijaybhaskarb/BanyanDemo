@@ -4,7 +4,7 @@ import * as fs from 'fs';
 import { Inventory } from '../pages/inventory';
 import { ScreenShotHelper } from '../utils/screenshothelper';
 
-test.describe.serial('Add remove product scenarios', ()=> {
+test.describe.serial('Add remove product scenarios standard user', ()=> {
    
     // login and store the session first. 
     const _standardUserSession : string = './auth/standarduser.json';
