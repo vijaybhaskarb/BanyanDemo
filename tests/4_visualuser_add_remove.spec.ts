@@ -1,19 +1,18 @@
 import {test,expect} from '@playwright/test';
 import { DemoSauceApp } from '../pages/demosauceapp';
-import * as fs from 'fs';
 import { Inventory } from '../pages/inventory';
 import { ScreenShotHelper } from '../utils/screenshothelper';
 
-test.describe.serial('Add remove product scenarios standard user', ()=> {
+test.describe.serial('Add remove product scenarios Visual user', ()=> {
    
     // login and store the session first. 
-    const _standardUserSession : string = './auth/standarduser.json';
+    const _visualuserSession : string = './auth/visualuser.json';
 
         // instrucing playwright to use this storage state file. 
-    test.use({storageState: _standardUserSession});
+    test.use({storageState: _visualuserSession});
 
     test.beforeAll(async ({browser})=> {
-        let username = "standard_user";
+        let username = "visual_user";
         let password = "secret_sauce";
         const usercontext = await browser.newContext();
         const userPage = await usercontext.newPage();               
@@ -21,7 +20,7 @@ test.describe.serial('Add remove product scenarios standard user', ()=> {
         await demoSauce.gotoHomePage();
         await demoSauce.login(username,password);
         // storing state of session in json file.
-        await userPage.context().storageState({path: _standardUserSession});
+        await userPage.context().storageState({path: _visualuserSession});
     });
 
     test('TOGGLE_ADD_REMOVE_PRODUCT', async ({page},testinfo)=> {   
