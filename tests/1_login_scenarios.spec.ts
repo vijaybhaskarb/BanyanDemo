@@ -46,6 +46,19 @@ test('REJECTED_INVALID_PASSWORD', async ({page}, testInfo)=> {
     await demoSauce.checkErrorMsgAppearing(expectedErrMsg);
 });
 
+test('REJECTED_LOCKED_USER', async ({page}, testInfo)=> {
+    let test_name = 'REJECTED_LOCKED_USER';
+    let username = "locked_out_user";
+    let password = "secret_sauce";
+    let expectedErrMsg = 'Epic sadface: Sorry, this user has been locked out.';
+    let demoSauce = new DemoSauceApp(page);
+    await demoSauce.gotoHomePage();
+    await demoSauce.checkLoginFieldsVisible();
+    await demoSauce.trylogin(username,password);
+    await ScreenShotHelper.captureScreenShot(page,testInfo,`${test_name}_ERROR`);
+    await demoSauce.checkErrorMsgAppearing(expectedErrMsg);
+});
+
 
 
 

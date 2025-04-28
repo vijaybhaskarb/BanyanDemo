@@ -9,6 +9,7 @@ export class DemoSauceApp{
     private _loginBtn : string = '[data-test="login-button"]';
     private _errorMsg : string = '[data-test="error"]';
     private _inventoryURL : string = '/inventory.html';
+   
 
     constructor(page:Page){
         this._page = page;
