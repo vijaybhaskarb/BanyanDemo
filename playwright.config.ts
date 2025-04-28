@@ -44,14 +44,29 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
+      name: 'UAT',
+      use: {
+        baseURL:'https://www.saucedemo.com',
+        browserName : 'chromium',
+        headless : true
+      }
+    },
+    {
+      name: 'SIT',
+      use: {
+        baseURL:'https://www.saucedemo.com',
+        browserName: 'firefox',
+        headless : true
+      }
+    },    
+    {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
-
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
 
     // {
     //   name: 'webkit',

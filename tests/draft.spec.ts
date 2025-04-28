@@ -13,16 +13,8 @@ test('draft', async ({page})=> {
     await demoSauce.gotoHomePage();
     await demoSauce.checkLoginFieldsVisible();
     await demoSauce.login(username,password);
-    await page.pause();
-
-    const invenory = new Inventory(page);
-
-    const testname = 'TOGGLE_MULTIPLE_PRODUCTS';
     const inventory = new Inventory(page);
     await inventory.goto();
     await inventory.addProductsAndVerifyToggle();
-    
     await inventory.removeProductsAndVerifyToggle();
-    await page.pause();
-
 })
